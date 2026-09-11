@@ -21,7 +21,7 @@ class linkedlist:
             element.append(str(curr.data))
             curr=curr.next
         print("head -->"," -> ".join(element) if element else "Empty linked List","-->None")
-def solve1():
+def slove1():
     original=linkedlist()
     line1=linkedlist()
     line2=linkedlist()
@@ -40,7 +40,7 @@ def solve1():
     print("queue 2:")
     line2.display()
 
-def solve2():
+def slove2():
     original=linkedlist()
     line1=linkedlist()
     line2=linkedlist()
@@ -57,5 +57,13 @@ def solve2():
     line1.display()
     line2.display()
     
-solve1()
-solve2()
+def main():
+    ch=int(input("1. slove in method 1 \n 2. solve in method 2"))
+    if ch==1:
+        slove1()
+    else:
+        slove2()
+if __name__ == "__main__":
+    main()
+
+    

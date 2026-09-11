@@ -22,6 +22,7 @@ class linkedlist:
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
+        self.display()
 
     def insert_at(self, ind, data):
         # FIX 1: Handle insertion at index 0 (start)
@@ -41,6 +42,7 @@ class linkedlist:
 
         new_node.next = curr.next
         curr.next = new_node
+        self.display()
 
     def delete_at(self, ind):
         if not self.head:
@@ -58,6 +60,7 @@ class linkedlist:
             curr = curr.next
 
         curr.next = curr.next.next
+        self.display()
 
     def delete_start(self):
         self.delete_at(0)
@@ -68,12 +71,14 @@ class linkedlist:
             raise IndexError("Cannot delete from an empty list")
         # FIX 2: Deleting end means index = length - 1
         self.delete_at(l - 1)
+    
 
     def delmiddle(self):
         l = self.length()
         if l == 0:
             raise IndexError("Cannot delete from an empty list")
         self.delete_at(l // 2)
+        self.display()
 
     def length(self):
         c = 0
@@ -82,6 +87,7 @@ class linkedlist:
             c += 1
             curr = curr.next
         return c
+        
 
     def display(self):
         curr = self.head
@@ -95,34 +101,44 @@ class linkedlist:
 
 def main():
     li = linkedlist()
+    while(1):
+        print("select operation:")
+        print("1.insert_at_start \n 2.instert_at_end \n 3.insert_at_index \n 4.delete_at_end \n 5.delete_at_start \n 6.delete_at_index \n 7.display \n 8.length \n 9.enter multiple element at once \n 10.exit")
 
-    print("Inserting 10, 20, 30 at end:")
-    li.insertend(10)
-    li.insertend(20)
-    li.insertend(30)
-    li.display()  # Output: 10 -> 20 -> 30
-    li.delmiddle()
-    li.display()
+        ch=int(input(" enter your choice   :"))
 
-    print("\nInsert 40 at start:")
-    li.insert_start(40)
-    li.display()  # Output: 40 -> 10 -> 20 -> 30
+        match ch:
+            case 1:
+                d=int(input("enter element  :"))
+                li.insert_start(d)
+            case 2:
+                d=int(input("enter element  :"))
+                li.insertend(d)
+            case 3:
+                d=int(input("enter element  :"))
+                i=int(input("enter index    :"))
+                li.insert_at(d,i)
+            case 4:
+                li.delete_end()
+            case 5:
+                li.delete_start()
+            case 6:
+                i=int(input("enter index    :"))
+                li.delete_at(i)
+            case 7:
+                li.display()
+            case 8:
+                print("length == ",li.length())
+            case 9:
+                lis=list(map(int, input("Enter numbers separated by space: ").split()))
+                for i in lis:
+                    li.insertend(i)
+            case 10:
+                exit(0)
+        li.display()
 
-    print("\nInsert 50 at index 3:")
-    li.insert_at(3, 50)
-    li.display()  # Output: 40 -> 10 -> 20 -> 50 -> 30
 
-    print("\nDelete at index 3:")
-    li.delete_at(3)
-    li.display()  # Output: 40 -> 10 -> 20 -> 30
 
-    print("\nDelete end:")
-    li.delete_end()
-    li.display()  # Output: 40 -> 10 -> 20
-
-    print("\nDelete start:")
-    li.delete_start()
-    li.display()  # Output: 10 -> 20
 
 
 if __name__ == "__main__":
