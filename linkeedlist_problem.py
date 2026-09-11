@@ -22,6 +22,7 @@ class linkedlist:
             curr=curr.next
         print("head -->"," -> ".join(element) if element else "Empty linked List","-->None")
 def slove1():
+
     original=linkedlist()
     line1=linkedlist()
     line2=linkedlist()
@@ -57,6 +58,7 @@ def slove2():
     line1.display()
     line2.display()
     
+
 def main():
     ch=int(input("1. slove in method 1 \n 2. solve in method 2"))
     if ch==1:
@@ -67,3 +69,4 @@ if __name__ == "__main__":
     main()
 
     
+
